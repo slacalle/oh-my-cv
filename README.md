@@ -2,9 +2,7 @@
 
 Microsoft Word and LaTeX are too overkill for a resume.
 
-So, why not write it in Markdown?
-
-Have fun: [ohmycv.app](https://ohmycv.app/)
+Forked from https://github.com/Renovamen/oh-my-cv
 
 
 &nbsp;
@@ -50,6 +48,7 @@ Contributions are welcome. Please read this [Contributing Guide](.github/CONTRIB
 
 ## Credits
 
+- [Renovamen/oh-my-cv](https://github.com/Renovamen/oh-my-cv)
 - [billryan/resume](https://github.com/billryan/resume)
 
 
