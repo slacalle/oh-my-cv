@@ -8,9 +8,9 @@ WORKDIR /app
 # Only copy manifest files first to leverage caching
 COPY pnpm-lock.yaml ./
 COPY package.json ./
-COPY packages/utils/package.json ./packages/utils/package.json
-COPY packages/vue-shortcuts/package.json ./packages/vue-shortcuts/package.json
-COPY site/package.json ./site/package.json
+COPY pnpm-workspace.yaml ./
+COPY packages/*/package.json ./packages/*/
+COPY site/package.json ./site/
 
 # Install dependencies
 RUN pnpm install
