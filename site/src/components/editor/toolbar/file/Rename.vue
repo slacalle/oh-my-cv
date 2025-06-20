@@ -1,22 +1,25 @@
 <template>
-  <UiButton
-    class="gap-x-1.5 w-full h-8 justify-start"
-    variant="ghost"
-    size="sm"
-    @click="startRename"  <!-- Your rename logic here -->
-  >
-    <span i-material-symbols:edit-square-outline-rounded text-base />
-    {{ $t("toolbar.file.rename") }}
-    <span class="flex-1 tracking-widest" text="xs right muted-foreground">↵</span>
-  </UiButton>
+  <div>
+    <UiButton
+      class="gap-x-1.5 w-full h-8 justify-start"
+      variant="ghost"
+      size="sm"
+      @click="startRename"
+    >
+      <span i-material-symbols:edit-square-outline-rounded text-base />
+      {{ $t("toolbar.file.rename") }}
+      <span class="flex-1 tracking-widest" text="xs right muted-foreground">↵</span>
+    </UiButton>
 
-  <SharedUiEditable
-    class="text-sm ml-8.5 mt-1"
-    :default-value="data.resumeName"
-    submit-mode="enter"
-    auto-resize
-    @submit="(text) => rename(text)"
-  />
+    <SharedUiEditable
+      v-if="isEditing"
+      class="text-sm ml-8.5 mt-1"
+      :default-value="data.resumeName"
+      submit-mode="enter"
+      auto-resize
+      @submit="rename"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -42,6 +45,8 @@ const rename = async (text?: string) => {
     },
     false
   );
+
+  isEditing.value = false;
 };
 </script>
 
