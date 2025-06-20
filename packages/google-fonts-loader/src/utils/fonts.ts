@@ -47,7 +47,7 @@ export const fetchFontList = async (apiKey: string): Promise<Font[]> => {
   // Request a list of all available Google Fonts, sorted by popularity
   const url = new URL(GOOGLE_FONTS_API);
 
-  url.searchParams.append("sort", "popularity");
+  // url.searchParams.append("sort", "popularity");
   url.searchParams.append("key", apiKey);
 
   const response = await get(url.href);
