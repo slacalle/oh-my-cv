@@ -41,11 +41,7 @@ toolbar:
         header: Import a Markdown file
         from_local: Drag your file here, or click here to choose a file
         from_url: Paste file URL
-    export_pdf:
-      title: Export PDF
-      alert:
-        title: Heads up!
-        content: When printing on Windows, please select "Save as PDF" in the print settings popup, <b>not</b> "Microsoft Print to PDF".
+    export_pdf: Export PDF
     export_md: Export Markdown
     export_css: Export CSS
   correct_case:
