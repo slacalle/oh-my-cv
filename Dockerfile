@@ -5,10 +5,10 @@ RUN npm install -g pnpm
 
 WORKDIR /app
 
-# Only copy manifest files first to leverage caching
-COPY pnpm-lock.yaml ./
-COPY package.json ./
-COPY pnpm-workspace.yaml ./
+# Copy root files and workspace config
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+# Copy only package.jsons from workspaces
 COPY packages/*/package.json ./packages/*/
 COPY site/package.json ./site/
 
