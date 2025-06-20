@@ -47,6 +47,7 @@ toolbar:
         title: Heads up!
         content: When printing on Windows, please select "Save as PDF" in the print settings popup, <b>not</b> "Microsoft Print to PDF".
     export_md: Export Markdown
+    export_css: Export CSS
   correct_case:
     title: Correct Case
     example:

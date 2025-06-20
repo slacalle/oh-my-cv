@@ -35,6 +35,16 @@
     <span i-ri:markdown-fill text-base />
     {{ $t("toolbar.file.export_md") }}
   </UiButton>
+
+  <UiButton
+  class="gap-x-1.5 w-full h-8 justify-start"
+  variant="ghost"
+  size="sm"
+  @click="exportCSS"
+>
+  <span i-mdi:language-css3 text-base />
+  {{ $t("toolbar.file.export_css") }}
+</UiButton>
 </template>
 
 <script lang="ts" setup>
@@ -55,5 +65,10 @@ const exportPDF = () => {
 // Export as Markdown
 const exportMd = () => {
   downloadFile(`${saveName.value}.md`, data.markdown);
+};
+
+// Export CSS
+const exportCSS = () => {
+  downloadFile(`${saveName.value}.css`, data.css);
 };
 </script>
