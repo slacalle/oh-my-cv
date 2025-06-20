@@ -12,17 +12,6 @@
           {{ $t("toolbar.file.export_pdf.title") }}
         </UiButton>
       </UiTooltipTrigger>
-      <UiTooltipContent side="bottom" class="w-54 p-0 rounded border-destructive/60">
-        <UiAlert variant="destructive" class="border-none rounded-none">
-          <UiAlertTitle>
-            {{ $t("toolbar.file.export_pdf.alert.title") }}
-            <span class="text-foreground font-normal text-xs">
-              (<SharedIssueLink issue="13" />, <SharedIssueLink issue="16" />)
-            </span>
-          </UiAlertTitle>
-          <UiAlertDescription v-html="$t('toolbar.file.export_pdf.alert.content')" />
-        </UiAlert>
-      </UiTooltipContent>
     </UiTooltip>
   </UiTooltipProvider>
 
