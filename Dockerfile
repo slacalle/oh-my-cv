@@ -4,17 +4,22 @@ FROM node:18-alpine AS builder
 RUN npm install -g pnpm
 
 WORKDIR /app
-COPY . .
+
+# Only copy manifest files first to leverage caching
+COPY pnpm-lock.yaml ./
+COPY package.json ./
+COPY packages/utils/package.json ./packages/utils/package.json
+COPY packages/vue-shortcuts/package.json ./packages/vue-shortcuts/package.json
+COPY site/package.json ./site/package.json
 
 # Install dependencies
 RUN pnpm install
 
-# 🛠 Explicitly build dependencies in order
-#RUN pnpm --filter=utils build && pnpm --filter=site build
-#RUN pnpm --filter=utils build && pnpm --filter=vue-shortcuts build && pnpm --filter=site build
+# Now copy the rest of the source code
+COPY . .
+
+# Build packages in order
 RUN pnpm --filter './packages/**' build && pnpm --filter site build
-
-
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
