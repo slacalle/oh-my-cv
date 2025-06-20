@@ -5,18 +5,11 @@ RUN npm install -g pnpm
 
 WORKDIR /app
 
-# Copy root files and workspace config
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-
-# Copy only package.jsons from workspaces
-COPY packages/*/package.json ./packages/*/
-COPY site/package.json ./site/
+# Copy the source code
+COPY . .
 
 # Install dependencies
 RUN pnpm install
-
-# Now copy the rest of the source code
-COPY . .
 
 # Build packages in order
 RUN pnpm --filter './packages/**' build && pnpm --filter site build
