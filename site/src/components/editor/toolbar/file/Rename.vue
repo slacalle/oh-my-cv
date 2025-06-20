@@ -1,9 +1,14 @@
 <template>
-  <div class="hstack gap-x-1.5 px-3 w-full h-8">
+  <UiButton
+    class="gap-x-1.5 w-full h-8 justify-start"
+    variant="ghost"
+    size="sm"
+    @click="startRename"  <!-- Your rename logic here -->
+  >
     <span i-material-symbols:edit-square-outline-rounded text-base />
     {{ $t("toolbar.file.rename") }}
     <span class="flex-1 tracking-widest" text="xs right muted-foreground">↵</span>
-  </div>
+  </UiButton>
 
   <SharedUiEditable
     class="text-sm ml-8.5 mt-1"
@@ -15,7 +20,15 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 const { data } = useDataStore();
+
+const isEditing = ref(false);
+
+const startRename = () => {
+  isEditing.value = true;
+};
 
 const rename = async (text?: string) => {
   if (!text || !data.resumeId) return;
@@ -25,9 +38,10 @@ const rename = async (text?: string) => {
   await storageService.updateResume(
     {
       id: data.resumeId,
-      name: text
+      name: text,
     },
     false
   );
 };
 </script>
+
