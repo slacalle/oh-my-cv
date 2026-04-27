@@ -1,0 +1,16 @@
+services:
+  oh-my-cv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: oh-my-cv:local
+    container_name: oh-my-cv
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - proxy_network
+
+networks:
+  proxy:
+    external: true
